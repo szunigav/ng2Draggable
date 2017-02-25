@@ -13,6 +13,7 @@ export class Draggable implements OnDestroy, OnInit {
   private Δx: number = 0;
   private Δy: number = 0;
   private mustBePosition: Array<string> = ['absolute', 'fixed', 'relative'];
+  private dragItem: HTMLElement = null;
   constructor(
     private el: ElementRef, private renderer: Renderer
   ) {
@@ -27,16 +28,26 @@ export class Draggable implements OnDestroy, OnInit {
   public ngOnInit(): void {
     this.renderer.setElementAttribute(this.el.nativeElement, 'draggable', 'true');
   }
-  onDragStart(event: MouseEvent) {
+  onDragStart(event: DragEvent) {
+    this.dragItem = event.target['cloneNode'](true);
+    this.dragItem.style.visibility = "hidden";
+    document.body.appendChild(this.dragItem);
+    event.dataTransfer['setDragImage'](this.dragItem, 0, 0);
+
     this.Δx = event.x - this.el.nativeElement.offsetLeft;
     this.Δy = event.y - this.el.nativeElement.offsetTop;
   }
-  onDrag(event: MouseEvent) {
+  onDrag(event: DragEvent) {
     this.doTranslation(event.x, event.y);
   }
-  onDragEnd(event: MouseEvent) {
+  onDragEnd(event: DragEvent) {
     this.Δx = 0;
     this.Δy = 0;
+
+    if(this.dragItem) {
+      document.body.removeChild(this.dragItem);
+    }
+
   }
   doTranslation(x: number, y: number) {
     if (!x || !y) return;

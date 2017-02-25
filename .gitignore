@@ -4,16 +4,9 @@ typings/
 typings/*
 
 .DS_Store
-.idea/modules.xml
-
-.idea/ng2Draggable.iml
-
-.idea/vcs.xml
-
-.idea/workspace.xml
+.idea/
 .temp
 .vscode
 
 dist/*
-**/*.js
 **/*.d.ts

@@ -7,7 +7,7 @@
   "scripts": {
     "task.compile:system": "./.config/bundle.js",
     "task.compile:common": "./node_modules/.bin/tsc -p tsconfig.publish.json",
-    "task.compile": "npm run task.compile:common && npm run task.compile:system",
+    "task.compile": "npm run task.compile:common",
     "task.clean": "./node_modules/.bin/del dist \"ng2-draggable.+(js|d.ts|js.map)\"",
     "prepublish": "npm run task.clean && npm run task.compile",
     "lite": "lite-server",
@@ -33,16 +33,16 @@
   "homepage": "https://github.com/CoderAjay/ng2Draggable#readme",
   "dependencies": {},
   "peerDependencies": {
-    "@angular/common": "~2.2.0",
-    "@angular/compiler": "~2.2.0",
-    "@angular/core": "~2.2.0"
+    "@angular/common": "~2.4.0",
+    "@angular/compiler": "~2.4.0",
+    "@angular/core": "~2.4.0"
   },
   "devDependencies": {
-    "@angular/common": "~2.2.0",
-    "@angular/compiler": "~2.2.0",
-    "@angular/core": "~2.2.0",
-    "@angular/platform-browser": "~2.2.0",
-    "@angular/platform-browser-dynamic": "~2.2.0",
+    "@angular/common": "~2.4.0",
+    "@angular/compiler": "~2.4.0",
+    "@angular/core": "~2.4.0",
+    "@angular/platform-browser": "~2.4.0",
+    "@angular/platform-browser-dynamic": "~2.4.0",
     "core-js": "^2.4.1",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
